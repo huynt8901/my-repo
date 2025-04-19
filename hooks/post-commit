@@ -1,0 +1,10 @@
+#!/bin/bash
+
+REPOS="$1"
+REV="$2"
+LOGFILE="/home/nthuy2100027/myrepo/hooks/post-commit.log"
+
+echo "Commit at revision $REV" >> "$LOGFILE"
+
+echo "SVN commit at revision $REV" | mail -s "SVN Commit Notification" nthuy2100027@localhost
+

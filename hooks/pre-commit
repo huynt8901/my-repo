@@ -1,0 +1,17 @@
+#!/bin/bash
+
+REPOS="$1"
+TXN="$2"
+
+SVNLOOK=/usr/bin/svnlook
+
+MSG=$($SVNLOOK log -t "$TXN" "$REPOS")
+
+# Kiểm tra nếu message trống hoặc ít hơn 10 ký tự
+if [ -z "$MSG" ] || [ ${#MSG} -lt 10 ]; then
+  echo "Commit message quá ngắn! Vui lòng viết ít nhất 10 ký tự." >&2
+  exit 1
+fi
+
+exit 0
+
